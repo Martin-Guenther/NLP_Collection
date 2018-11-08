@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+glove*
+*.pkl
+monthly_articles/
