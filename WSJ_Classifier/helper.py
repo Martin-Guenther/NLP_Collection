@@ -12,6 +12,8 @@ import pickle
 from bs4 import BeautifulSoup
 import requests
 from tqdm import tqdm
+import matplotlib.pyplot as plt
+plt.rcdefaults()
 
 
 def save_obj(obj, name):
@@ -119,3 +121,25 @@ def get_wsj(start_date, end_date):
 
     print("Downloaded {} articles from Wall Street Journal.".format(n))
     return news_articles, sections
+
+def plot_training_history(history, model_name="model"):
+    # Plot training and validation accuracy values
+    plt.subplot(121)
+    plt.plot(history.history['acc'])
+    plt.plot(history.history['val_acc'])
+    plt.title('Prediction accuracy of {}'.format(model_name))
+    plt.ylabel('Accuracy')
+    plt.xlabel('Training Epoch')
+    plt.legend(['Train', 'Test'], loc='upper left')
+    #plt.show()
+    
+    # Plot training and validation loss values
+    plt.subplot(122)
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('Prediction loss of {}'.format(model_name))
+    plt.ylabel('Loss')
+    plt.xlabel('Training Epoch')
+    plt.legend(['Train', 'Test'], loc='upper left')
+    plt.tight_layout()
+    plt.show()
