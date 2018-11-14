@@ -106,3 +106,4 @@ venv.bak/
 glove*
 *.pkl
 monthly_articles/
+small_vocab_*.txt
